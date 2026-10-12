@@ -20,9 +20,8 @@
     <!-- Header Navigation -->
     <header class="bg-white shadow-sm border-b sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="#" onclick="showSection('home')" class="flex items-center gap-2 text-2xl font-bold text-gray-900">
-                <span class="bg-orange-main text-white p-2 rounded-lg text-lg"><i class="fa-solid fa-tag"></i></span>
-                Offria
+            <a href="#" onclick="showSection('home')" class="flex items-center gap-2">
+                <img src="/images/Offria.jpeg" alt="Offria Logo" class="h-10 w-auto rounded-lg shadow-sm">
             </a>
 
             <nav class="flex items-center gap-4">
@@ -221,7 +220,6 @@
 
     <!-- JavaScript Data Logic & Routing -->
     <script>
-        // Initial Mock Data configured with local public image paths
         let cities = ["Casablanca", "Rabat", "Tanger", "Marrakech", "Agadir"];
         let categories = ["Automobile", "Immobilier", "Informatique", "Maison & Déco", "Sports & Loisirs"];
         let users = [
@@ -235,7 +233,7 @@
                 price: 1200,
                 category: "Sports & Loisirs",
                 city: "Casablanca",
-                image: "/images/velo.jpg", // Path pointing to public/images/velo.jpg
+                image: "/images/velo.jpg",
                 description: "Vélo vert en très bon état. Vendu avec panier avant. À récupérer sur place."
             },
             {
@@ -244,18 +242,16 @@
                 price: 7500,
                 category: "Informatique",
                 city: "Tanger",
-                image: "/images/pc.jpg", // Path pointing to public/images/pc.jpg
+                image: "/images/pc.jpg",
                 description: "PC de jeu et développement. Ryzen 5, 16 Go RAM, 1 TB SSD."
             }
         ];
 
-        // Page Navigation
         function showSection(sectionId) {
             document.querySelectorAll('.page-section').forEach(el => el.classList.add('hidden'));
             document.getElementById(`section-${sectionId}`).classList.remove('hidden');
         }
 
-        // Dropdown Population
         function populateDropdowns() {
             const catFilter = document.getElementById('category-filter');
             const cityFilter = document.getElementById('city-filter');
@@ -280,7 +276,6 @@
             renderAdminLists();
         }
 
-        // Render Ads Grid
         function renderAds(adsToRender = ads) {
             const grid = document.getElementById('ads-grid');
             grid.innerHTML = '';
@@ -311,7 +306,6 @@
             });
         }
 
-        // Filter Logic (Req 3, 4)
         function filterAds() {
             const query = document.getElementById('search-input').value.toLowerCase();
             const cat = document.getElementById('category-filter').value;
@@ -327,7 +321,6 @@
             renderAds(filtered);
         }
 
-        // View Ad Details
         function viewAdDetails(id) {
             const ad = ads.find(a => a.id === id);
             if (!ad) return;
@@ -342,7 +335,6 @@
             showSection('details');
         }
 
-        // Post New Ad (Req 6)
         function handlePostAd(e) {
             e.preventDefault();
             const newAd = {
@@ -361,7 +353,6 @@
             showSection('home');
         }
 
-        // Delete Ad (Req 12)
         function deleteAd(id) {
             if (confirm("Supprimer cette annonce ?")) {
                 ads = ads.filter(a => a.id !== id);
@@ -369,14 +360,12 @@
             }
         }
 
-        // Send Message (Req 13)
         function sendMessage(e) {
             e.preventDefault();
             alert("Message envoyé à l'annonceur avec succès !");
             document.getElementById('msg-text').value = '';
         }
 
-        // Admin Actions (Req 7, 8, 9, 10, 11)
         function addCity() {
             const name = document.getElementById('new-city-input').value.trim();
             if (name) { cities.push(name); document.getElementById('new-city-input').value = ''; populateDropdowns(); }
@@ -405,7 +394,6 @@
             usersList.innerHTML = users.map(u => `<li class="py-2 flex justify-between text-sm"><span>${u.name} (${u.email})</span><button onclick="deleteUser(${u.id})" class="text-red-500"><i class="fa-solid fa-user-xmark"></i> Supprimer</button></li>`).join('');
         }
 
-        // Initialize on load
         populateDropdowns();
         renderAds();
     </script>
