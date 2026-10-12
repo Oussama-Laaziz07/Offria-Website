@@ -20,8 +20,9 @@
     <!-- Header Navigation -->
     <header class="bg-white shadow-sm border-b sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="#" onclick="showSection('home')" class="flex items-center gap-2">
-                <img src="/images/Offria.jpeg" alt="Offria Logo" class="h-10 w-auto rounded-lg shadow-sm">
+            <a href="#" onclick="showSection('home')" class="flex items-center gap-3 text-2xl font-bold text-gray-900">
+                <img src="/images/Offria.jpeg" alt="Offria Logo" class="h-10 w-10 object-cover rounded-lg shadow-sm">
+                <span>Offria</span>
             </a>
 
             <nav class="flex items-center gap-4">
